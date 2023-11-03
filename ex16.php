@@ -4,7 +4,6 @@ function solution(string $S): int
 {
   $S = ltrim($S, "0");
 
-  print $S;
   $array = preg_split('//', $S, -1, PREG_SPLIT_NO_EMPTY);
 
   $zeros = 0;
