@@ -1,6 +1,6 @@
 <?php
 
-function solution(string $S)
+function solution(string $S): int
 {
   $S = ltrim($S, "0");
 
@@ -13,7 +13,8 @@ function solution(string $S)
   for ($i = 0; $i < count($array); $i++) {
     if ($array[$i] == 0) {
       $zeros++;
-    } 
+    }
+
     if ($array[$i] == 1) {
       $ones++;
     }
