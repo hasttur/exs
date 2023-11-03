@@ -10,7 +10,8 @@ function solution($S) {
     if ($array[$i] == "b") {
       $bees = true;
     }
-    else if($bees && $array[$i] == "a"){
+    
+     if($bees && $array[$i] == "a"){
       $response = false;
     }
   }
