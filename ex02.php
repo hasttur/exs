@@ -2,12 +2,12 @@
 
 function sequentialSearch(array $array, int $element): int
 {
-  for ($i = 0; $i < count($array); $i++) {
-    if ($array[$i] == $element) {
-      return $i;
+    for ($i = 0; $i < count($array); $i++) {
+        if ($array[$i] == $element) {
+            return $i;
+        }
     }
-  }
-  return -1;
+    return -1;
 }
 
 
