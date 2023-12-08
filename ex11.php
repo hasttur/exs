@@ -2,17 +2,17 @@
 
 function temperatureConvertor(int $temperature, string $unit): array
 {
-    if ($unit == "F") {
-        return [
-            ($temperature - 32) * 5 / 9, "C"
-        ];
-    }
+	if ($unit == "F") {
+		return [
+			($temperature - 32) * 5 / 9, "C"
+		];
+	}
 
-    if ($unit == "C") {
-        return [
-            ($temperature * 5 / 9) + 32, "F"
-        ];
-    }
+	if ($unit == "C") {
+		return [
+			($temperature * 5 / 9) + 32, "F"
+		];
+	}
 }
 
 
