@@ -2,13 +2,16 @@
 
 function findMaxMin(array $array): array
 {
-	if (count($array) === 0)
+	$arrayLength = count($array);
+
+	if ($arrayLength === 0) {
 		return [];
+	}
 
 	$max = $array[0];
 	$min = $array[0];
 
-	for ($i = 0; $i < count($array); $i++) {
+	for ($i = 1; $i < $arrayLength; $i++) {
 		if ($array[$i] > $max) {
 			$max = $array[$i];
 		}
@@ -21,4 +24,8 @@ function findMaxMin(array $array): array
 	return ["max" => $max, "min" => $min];
 }
 
-print_r(findMaxMin([1, 2, 3, 4, 4, 55, 656, 6, 786, 623, 5, 125, 2345]));
+$myArray = [1, 2, 3, 4, 4, 55, 656, 6, 786, 623, 5, 125, 2345];
+$result = findMaxMin($myArray);
+
+// Imprimir el resultado
+print_r($result);

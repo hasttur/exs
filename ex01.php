@@ -1,30 +1,30 @@
 <?php
 
-// genera un rombo con el valor que se ingresa
-
-function pattern(int $n): void
+function generateDiamond(int $n): void
 {
-	$valueA = ($n - 1) / 2;
-	$valueB = 3 * $n / 2 - 1;
+	// Asegurarse de que $n sea un número impar para obtener un rombo simétrico
+	$n = ($n % 2 == 0) ? $n + 1 : $n;
 
-	// rows
+	$midpoint = floor($n / 2);
+
+	// Filas
 	for ($i = 0; $i < $n; $i++) {
-		// columns
+		// Columnas
 		for ($j = 0; $j < $n; $j++) {
-			if ($i + $j == $valueA ||
-				$i - $j == $valueA ||
-				$j - $i == $valueA ||
-				$i + $j == $valueB ||
-				$i == $valueA ||
-				$j == $valueA) {
-				print "* ";
+			if ($i + $j == $midpoint ||
+				$i - $j == $midpoint ||
+				$j - $i == $midpoint ||
+				$i + $j == $n + $midpoint - 1 ||
+				$i == $midpoint ||
+				$j == $midpoint) {
+				echo "* ";
 			} else {
-				print "  ";
+				echo "  ";
 			}
 		}
-		print PHP_EOL;
+		echo PHP_EOL;
 	}
 }
 
 $n = 13;
-pattern($n);
+generateDiamond($n);

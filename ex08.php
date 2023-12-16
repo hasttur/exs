@@ -2,16 +2,25 @@
 
 function fibonacci(int $number): array
 {
-	if ($number > 1) {
-		$response = [0, 1];
+	$response = [];
 
-		for ($i = 2; $i < $number; $i++) {
-			$response[$i] = $response[$i - 1] + $response[$i - 2];
+	if ($number >= 0) {
+		for ($i = 0; $i < $number; $i++) {
+			if ($i <= 1) {
+				$response[$i] = $i;
+			} else {
+				$response[$i] = $response[$i - 1] + $response[$i - 2];
+			}
 		}
-
-		return $response;
 	}
+
+	return $response;
 }
 
-print_r(fibonacci(33));
-print implode(", ", fibonacci(33));
+$sequence = fibonacci(33);
+
+// Imprimir el array
+print_r($sequence);
+
+// Imprimir la secuencia como cadena
+echo implode(", ", $sequence);

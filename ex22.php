@@ -1,39 +1,47 @@
 <?php
+
 function validateCode(string $code): string
 {
-	if ($code == '') {
-		return "no se puede validar, texto vacio ";
+	// Verifica si el código está vacío
+	if (empty($code)) {
+		return "No se puede validar, texto vacío";
 	}
+
 	$error = 0;
 	$keyOpen = ['(', '{', '['];
 	$keyClose = [')', '}', ']'];
 
-	$array = preg_split('//', $code, -1, PREG_SPLIT_NO_EMPTY);
+	// Utiliza str_split para dividir el código en caracteres
+	$array = str_split($code);
 
 	foreach ($array as $char) {
+		// Incrementa el contador si es una llave de apertura
 		if (in_array($char, $keyOpen)) {
 			$error++;
 		}
 
+		// Decrementa el contador si es una llave de cierre
 		if (in_array($char, $keyClose)) {
 			$error--;
 		}
 	}
 
-	if ($error != 0) {
+	// Verifica si el contador de errores es diferente de cero
+	if ($error !== 0) {
 		return "Hay errores en su código";
 	}
+
 	return 'No hay errores en su código';
 }
 
-$goodcode = " 
+$goodCode = " 
  function (value) {
 	 if (true) {
 	 } else {}
  }
 ";
 
-$badcode = "
+$badCode = "
  function (value {
 	 if (true) {
 	 } else {
@@ -41,15 +49,13 @@ $badcode = "
  }
 ";
 
-$nocode = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere sem 
+$noCode = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere sem 
 pulvinar mollis tristique. Nullam nunc justo, consequat et auctor faucibus, congue ut odio.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus hendrerit quam sit amet felis tempus,
 et convallis nunc posuere. Cras eget congue mauris, eu vulputate elit.";
 
-echo "01 = " . validateCode($goodcode) . PHP_EOL;
-
-echo "02 = " . validateCode($badcode) . PHP_EOL;
-
-echo "03 = " . validateCode($nocode) . PHP_EOL;
-
+// Utiliza variables con nombres más descriptivos
+echo "01 = " . validateCode($goodCode) . PHP_EOL;
+echo "02 = " . validateCode($badCode) . PHP_EOL;
+echo "03 = " . validateCode($noCode) . PHP_EOL;
 echo "04 = " . validateCode('') . PHP_EOL;

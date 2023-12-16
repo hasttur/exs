@@ -16,7 +16,8 @@ function solution(string $S): int
 			$ones++;
 		}
 	}
-	return $zeros + ($ones - 1) * 2 + 1;
+
+	return $zeros + ($ones + 1) * 2 - 1; // Corrección aquí
 }
 
 print solution("011100");

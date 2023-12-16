@@ -3,21 +3,20 @@
 function calcularRango(int $value): int
 {
 	$calculo = 0;
-	$response = 0;
+
+	// Realizar el cálculo en base a la lógica proporcionada
 	for ($contador = 1; $contador <= 5; $contador++) {
-		$calculo = $calculo + ($value * $contador);
+		$calculo += $value * $contador;
 	}
 
+	// Evaluar el resultado y asignar la respuesta en base a los rangos
 	if ($calculo <= 20) {
-		$response = 0;
+		return 0;
+	} elseif ($calculo <= 120) {
+		return 1;
 	} else {
-		if ($calculo <= 120) {
-			$response = 1;
-		} else {
-			$response = 2;
-		}
+		return 2;
 	}
-	return $response;
 }
 
 echo calcularRango(5);

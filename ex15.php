@@ -1,24 +1,29 @@
 <?php
-// return the smallest integer that doenst occur in the arrray 
+
 function solution(array $A): int
 {
-	$temp = [];
-	foreach ($A as $element) {
-		if ($element > 0) $temp[] = $element;
+	// Eliminar elementos no positivos y duplicados
+	$filteredArray = array_values(array_unique(array_filter($A, function ($element) {
+		return $element > 0;
+	})));
+
+	// Si el array está vacío, el resultado es 1
+	if (empty($filteredArray)) {
+		return 1;
 	}
 
-	$i = 1;
-	$last = 0;
-	sort($temp);
+	// Ordenar el array resultante
+	sort($filteredArray);
 
-	foreach ($temp as $tempElement) {
-
-		if ($last == $tempElement) $i--;
-		else if ($i != $tempElement) return $i;
-
-		$i++;
-		$last = $tempElement;
+	// Iterar para encontrar el menor entero no presente
+	$smallestInteger = 1;
+	foreach ($filteredArray as $element) {
+		if ($element == $smallestInteger) {
+			$smallestInteger++;
+		} else {
+			return $smallestInteger;
+		}
 	}
 
-	return $i;
+	return $smallestInteger;
 }

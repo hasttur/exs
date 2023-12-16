@@ -2,19 +2,23 @@
 
 function solution(string $S): bool
 {
-	$array = preg_split('//', $S, -1, PREG_SPLIT_NO_EMPTY);
-	$bees = false;
-	$response = true;
+	$array = str_split($S); // Usar str_split en lugar de preg_split para dividir la cadena en caracteres
+	$foundB = false;
 
-	for ($i = 0; $i < count($array); $i++) {
-		if ($array[$i] == "b") {
-			$bees = true;
-		}
-
-		if ($bees && $array[$i] == "a") {
-			$response = false;
+	foreach ($array as $char) {
+		if ($char === "b") {
+			$foundB = true;
+		} elseif ($foundB && $char === "a") {
+			return false; // Tan pronto como encuentres "ba", devolver false
 		}
 	}
 
-	return $response;
+	return true;
 }
+
+// Ejemplo de uso
+$result = solution("abcde");
+var_dump($result); // Devolverá true
+
+$result = solution("acdbe");
+var_dump($result); // Devolverá false

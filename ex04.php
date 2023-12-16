@@ -10,6 +10,7 @@ function bubbleSort(array $array): array
 
 		for ($i = 0; $i < $count; $i++) {
 			if ($array[$i] > $array[$i + 1]) {
+				// Intercambiar elementos si están en el orden incorrecto
 				$temp = $array[$i];
 				$array[$i] = $array[$i + 1];
 				$array[$i + 1] = $temp;
@@ -21,5 +22,8 @@ function bubbleSort(array $array): array
 	return $array;
 }
 
-print_r(bubbleSort([2, 4, 65, 7, 8, 3, 2, 345, 21, 5, 1, 6, 87]));
-print "La lista ordenada es: " . implode(", ", bubbleSort([2, 4, 65, 7, 8, 3, 2, 345, 21, 5, 1, 6, 87]));
+$unsortedArray = [2, 4, 65, 7, 8, 3, 2, 345, 21, 5, 1, 6, 87];
+$sortedArray = bubbleSort($unsortedArray);
+
+// Imprime el array ordenado
+echo "La lista ordenada es: " . implode(", ", $sortedArray);

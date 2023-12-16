@@ -1,9 +1,10 @@
 <?php
 
-function decimalToBinary(int $number): int
+function decimalToBinary(int $number): string
 {
-	if ($number == 0)
-		return 0;
+	if ($number == 0) {
+		return "0";
+	}
 
 	$binary = "";
 
@@ -13,7 +14,11 @@ function decimalToBinary(int $number): int
 		$binary = $bit . $binary;
 		$number = floor($number / 2);
 	}
-	return intval($binary);
+
+	return $binary;
 }
 
-print decimalToBinary(77);
+$decimalNumber = 77;
+$binaryRepresentation = decimalToBinary($decimalNumber);
+
+echo "El número binario para $decimalNumber es: $binaryRepresentation";
